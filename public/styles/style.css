@@ -45,6 +45,162 @@ padding: 0;
 
 
 
+
+
+html,
+body
+	height:100%;
+
+body
+	padding:30px;
+	background-color:#f9f9f9;
+	display:flex;//demo purposes
+	justify-content:space-around;
+	align-items:center;
+	flex-wrap:wrap;
+
+//it could be faster im just showing the effect
+$rotation-speed = 3s
+
+.fx-wrap
+	display:inline-block;
+	padding-top:20px;
+	padding-bottom:20px;
+	padding-left:2px;
+	padding-right:2px;
+	overflow:hidden;
+	.card
+		perspective:1000px;
+		width:324px;
+		height:204px;
+		position:relative;
+		&>.front,
+		&>.back
+			&:before
+				transition:all ($rotation-speed/3)s;
+				content:'';
+				display:block;
+				position:absolute;
+				width:100%;
+				height:100%;
+				background-size:contain;
+				background-image: linear-gradient(135deg, rgba(238,238,238,0) 0%,rgba(255,255,255,0) 36%,rgba(255,255,255,0.4) 36%,rgba(255,255,255,0.4) 68%,rgba(247,247,247,0) 69%,rgba(238,238,238,0) 70%);
+				background-repeat:no-repeat;
+				background-position:324px 0;
+				pointer-events: none;
+				z-index:20;
+			transition:transform $rotation-speed, z-index $rotation-speed 0s, box-shadow $rotation-speed;
+			box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+			will-change:transform;
+			position:absolute;
+			left:0;
+			right:0;
+			top:0;
+			bottom:0;
+			border-radius:4px;
+			background-color:#fff;
+			backface-visibility:hidden;
+			&>*
+				height:100%;
+			.image
+				float:left;
+			.text
+				display:flex;
+				flex-direction:column;
+				justify-content:space-between;
+				width:(@width/3)*2;
+				float:right;
+				button.flip
+					border-radius:9999em;
+					width:30px;
+					height:@width;
+					margin:10px;
+					border:0;
+					background-color:#dddddd;
+					color:#fff;
+					font-size:1.5em;
+					float:right;
+					flex:1;
+					outline:0;
+					transition:background-color .3s ease-in, transform .4s;
+					transition-delay:.1s;
+					&:hover
+						background-color:#16a8cf;
+					&:focus
+						transform:rotate(-360deg);
+				p
+					margin:30px auto;
+					width:80%;
+					flex:2;
+				a
+					text-transform:uppercase;
+					margin:10px auto;
+					text-align:right;
+					width:80%;
+					display:block;
+					flex:1;
+			.image
+				border-top-left-radius:@border-radius;
+				border-bottom-left-radius:@border-radius;
+				background-size:cover;
+				width:(@width/3);
+				background-color:#f5f5f5;
+				position:relative;
+				.heading
+					position:absolute;
+					bottom:0;
+					left:0;
+					right:0;
+					margin:0;
+					padding:10px;
+					font-size:1.5em;
+					text-align:right;
+					color:#fff;
+					text-transform:uppercase;
+		&>.front
+			z-index:2;
+			transform:rotateY(0deg);
+		&>.back
+			z-index:1;
+			transform:rotateY(180deg);
+			header,
+			.text
+				width:100%;
+				b
+					color:#0098A6;
+					width:80%;
+					margin:0 auto;
+				p
+					margin:20px auto;
+		&.flip-it
+			&>.front
+				transform:rotateY(-180deg);
+				z-index:1;
+			&>.back
+				transform:rotateY(0deg);
+				z-index:2;
+			&>.front,
+			&>.back
+				&:before
+					background-position:-324px 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #271033;
