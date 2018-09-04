@@ -8,15 +8,12 @@
   }
 })();
 
-/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
+/* When your mouse cursor enter the background, the fading won't pause and keep playing */ 
+$('.carousel').carousel({
+    pause: "false" /* Change to true to make it paused when your mouse cursor enter the background */
+});
+
+/*Clock */
 
 var deadline = new Date("jul 18, 2020 16:00:00").getTime();
  
@@ -34,30 +31,20 @@ document.getElementById("minute").innerHTML = minutes;
 document.getElementById("second").innerHTML =seconds; 
 if (t < 0) {
         clearInterval(x);
-        document.getElementById("demo").innerHTML = "TIME UP";
+       /* document.getElementById("demo").innerHTML = "TIME UP";*/
         document.getElementById("day").innerHTML ='0';
         document.getElementById("hour").innerHTML ='0';
         document.getElementById("minute").innerHTML ='0' ; 
         document.getElementById("second").innerHTML = '0'; }
 }, 1000);
+/*Clock End*/
 
 
 
 
 
 
-/* $(function() {
-  $(window).scroll(function() {
-    var winTop = $(window).scrollTop();
-    if (winTop >= 30) {
-      $("body").addClass("sticky-header");
-    } else {
-      $("body").removeClass("sticky-header");
-    }
-    }); */
 
 
 
-$('.flip-container').click(function (e) {
-  $(this).toggleClass('flipped');
-});
+
