@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,800");
 @import "compass/css3";
 
+.body {
+	padding: 0;
+}
 
 
 .page {
